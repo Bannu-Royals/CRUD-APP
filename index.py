@@ -9,7 +9,8 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI')
+# Use pymysql as the MySQL connector
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI').replace('mysql://', 'mysql+pymysql://')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = os.environ.get('SECRET_KEY')
 
