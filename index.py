@@ -22,7 +22,7 @@ class Item(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=True)
 
-# Create the database tables
+# Ensure database tables are created or migrated
 with app.app_context():
     db.create_all()
 
@@ -39,44 +39,59 @@ def index():
 
 @app.route('/view')
 def view_items():
-    items = Item.query.all()
-    return render_template('view.html', items=items)
+    try:
+        items = Item.query.all()
+        return render_template('view.html', items=items)
+    except Exception as e:
+        return f"An error occurred: {str(e)}", 500
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_item():
     if request.method == 'POST':
-        name = request.form['name']
-        description = request.form['description']
-        if name:
-            new_item_id = generate_unique_id()
-            new_item = Item(id=new_item_id, name=name, description=description)
-            db.session.add(new_item)
-            db.session.commit()
-            return redirect(url_for('view_items'))
-        # Handle validation errors here
+        try:
+            name = request.form['name']
+            description = request.form['description']
+            if name:
+                new_item_id = generate_unique_id()
+                new_item = Item(id=new_item_id, name=name, description=description)
+                db.session.add(new_item)
+                db.session.commit()
+                return redirect(url_for('view_items'))
+            # Handle validation errors here
+        except Exception as e:
+            return f"An error occurred: {str(e)}", 500
     return render_template('add_item.html')
 
 @app.route('/edit/<int:item_id>', methods=['GET', 'POST'])
 def edit_item(item_id):
-    item = Item.query.get_or_404(item_id)
-    if request.method == 'POST':
-        item.name = request.form['name']
-        item.description = request.form['description']
-        db.session.commit()
-        return redirect(url_for('update_items'))
-    return render_template('edit_item.html', item=item)
+    try:
+        item = Item.query.get_or_404(item_id)
+        if request.method == 'POST':
+            item.name = request.form['name']
+            item.description = request.form['description']
+            db.session.commit()
+            return redirect(url_for('update_items'))
+        return render_template('edit_item.html', item=item)
+    except Exception as e:
+        return f"An error occurred: {str(e)}", 500
 
 @app.route('/delete/<int:item_id>', methods=['POST'])
 def delete_item(item_id):
-    item = Item.query.get_or_404(item_id)
-    db.session.delete(item)
-    db.session.commit()
-    return redirect(url_for('update_items'))
+    try:
+        item = Item.query.get_or_404(item_id)
+        db.session.delete(item)
+        db.session.commit()
+        return redirect(url_for('update_items'))
+    except Exception as e:
+        return f"An error occurred: {str(e)}", 500
 
 @app.route('/update', methods=['GET'])
 def update_items():
-    items = Item.query.all()
-    return render_template('update_item.html', items=items)
+    try:
+        items = Item.query.all()
+        return render_template('update_item.html', items=items)
+    except Exception as e:
+        return f"An error occurred: {str(e)}", 500
 
 # Export the app as a serverless function
 def handler(event, context):
@@ -104,14 +119,17 @@ def handler(event, context):
     }
 
     # Call the Flask application with the WSGI environment
-    response = app(environ, start_response)
+    with app.app_context():
+        try:
+            response = app(environ, start_response)
+        except Exception as e:
+            return {
+                "statusCode": 500,
+                "body": f"An error occurred: {str(e)}"
+            }
 
     return {
         "statusCode": response.status_code,
         "headers": dict(response.headers),
         "body": response.data.decode("utf-8"),
     }
-
-# Start the Flask app (for local testing)
-if __name__ == '__main__':
-    app.run(debug=True)
