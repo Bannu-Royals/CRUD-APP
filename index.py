@@ -113,5 +113,5 @@ def handler(event, context):
     }
 
 # Start the Flask app (for local testing)
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
