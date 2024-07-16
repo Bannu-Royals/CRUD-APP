@@ -133,3 +133,7 @@ def handler(event, context):
         "headers": dict(response.headers),
         "body": response.data.decode("utf-8"),
     }
+
+# Start the Flask app (for local testing)
+if __name__ == '__main__':
+    app.run(debug=True)
