@@ -94,8 +94,8 @@ def update_items():
         return f"An error occurred: {str(e)}", 500
 
 # Export the app as a serverless function
-def handler(event, context):
-    from flask import request
+def handler(event):
+    from flask import request, start_response
     from werkzeug.datastructures import Headers
 
     # Convert the AWS Lambda event object to Flask's WSGI environment
