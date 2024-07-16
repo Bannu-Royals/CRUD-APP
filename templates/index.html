@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CRUD App</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='bannu_icon.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <div class="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+            <h1 class="text-xl  font-bold mb-4 text-center md:text-3xl">
+                Welcome to Simple CRUD App 
+                <span class="text-blue-500">😊</span>
+            </h1>
+            <div class="grid grid-cols-1 gap-4">
+                <a href="{{ url_for('view_items') }}" class="bg-orange-500 hover:bg-orange-600 text-white py-4 px-8 rounded-lg text-center block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    View Items 
+                    <span class="ml-2 text-lg">👀</span>
+                </a>
+                <a href="{{ url_for('add_item') }}" class="bg-green-500 hover:bg-green-600 text-white py-4 px-8 rounded-lg text-center block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    Add New Item 
+                    <span class="ml-2 text-lg">➕</span>
+                </a>
+                <a href="{{ url_for('update_items') }}" class="bg-blue-500 hover:bg-blue-600 text-white py-4 px-8 rounded-lg text-center block transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+                    Edit or Delete Item
+                    <span class="ml-2 text-lg">✏️</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
