@@ -112,6 +112,6 @@ def handler(event, context):
         "body": response.data.decode("utf-8"),
     }
 
-# Start the Flask app (for local testing)
+# Start the Flask app (for local testing) it is not required when deploying it in vercel
 # if __name__ == '__main__':
 #     app.run(debug=True)
