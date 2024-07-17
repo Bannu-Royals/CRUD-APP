@@ -8,13 +8,14 @@ https://crud-app-durgaprasadkakileti.onrender.com/
 ![image](https://github.com/user-attachments/assets/80d293e8-b06b-4ca1-a6ea-5e990a267093)
 
 ## View Items
-![image](https://github.com/user-attachments/assets/43c7fcba-30cc-4cd3-af03-fff2f702d34b)
+![image](https://github.com/user-attachments/assets/097d3f83-416e-442f-aa06-86ed8498a985)
 
 ## Add New Item
 ![image](https://github.com/user-attachments/assets/5b80e8d0-bced-429e-a64b-7acfef736d0d)
 
 ## Update Items
-![image](https://github.com/user-attachments/assets/b683e97a-1648-46c8-9563-4a529a1420a2)
+![image](https://github.com/user-attachments/assets/1980c231-fcdc-4885-8a49-720693817637)
+
 
 
 
