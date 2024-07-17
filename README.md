@@ -81,12 +81,15 @@ The application is deployed on Render, providing a seamless and scalable hosting
 #### Usage
 - **Add Items**: Navigate to the add item page, fill in the details, and submit the form.
   ![image](https://github.com/user-attachments/assets/5b80e8d0-bced-429e-a64b-7acfef736d0d)
+  
 - **View Items**: Access the view items page to see all items.
   ![image](https://github.com/user-attachments/assets/097d3f83-416e-442f-aa06-86ed8498a985)
+  
 - **Edit Items**: Use the edit item form to update item details.
   ![image](https://github.com/user-attachments/assets/1337b4f7-ad46-4525-a758-e70a9c360ddd)
+  
 - **Delete Items**: Submit a delete request to remove an item.
-- ![image](https://github.com/user-attachments/assets/1980c231-fcdc-4885-8a49-720693817637)
+ ![image](https://github.com/user-attachments/assets/1980c231-fcdc-4885-8a49-720693817637)
 
 
 #### Conclusion
